@@ -29,7 +29,7 @@ Feature: Checkout product
     And I click the continue button
     Then I should be navigated to checkout overview page
     And the overview should contain 1 item
-    And the item on overwiew at index 0 should have have quantity "1", title "Sauce Labs Bike Light", description "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.", and price "$9.99"
+    And the item on overwiew at index 0 should have have quantity "1", name "Sauce Labs Bike Light", description "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.", and price "$9.99"
     And the payment information should be "SauceCard #31337"
     And the shipping information should be "Free Pony Express Delivery!"
     And the item total should be "Item total: $9.99"

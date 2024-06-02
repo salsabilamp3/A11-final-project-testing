@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import helper.SwagWebDriverManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import testlogic.webtesting.DashboardPageFactory;
 import testlogic.webtesting.DetailProductPageFactory;
 
 public class DetailProductSteps {
