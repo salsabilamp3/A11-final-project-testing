@@ -1,5 +1,8 @@
 package testlogic.webtesting;
 
+import java.util.List;
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +25,27 @@ public class DashboardPageFactory {
 
     @FindBy(className = "shopping_cart_link")
     WebElement shoppingCartLink;
+
+    @FindBy(className = "inventory_list")
+    private WebElement inventoryList;
+
+    @FindBy(className = "inventory_item")
+    private List<WebElement> inventoryItems;
+
+    @FindBy(className = "inventory_item_img")
+    private List<WebElement> itemImages;
+
+    @FindBy(className = "inventory_item_name")
+    private List<WebElement> itemNames;
+
+    @FindBy(className = "inventory_item_desc")
+    private List<WebElement> itemDescriptions;
+
+    @FindBy(className = "inventory_item_price")
+    private List<WebElement> itemPrices;
+
+    @FindBy(className = "btn_inventory")
+    private List<WebElement> addToCartButtons;
 
     public DashboardPageFactory(WebDriver driver) {
         this.driver = driver;
@@ -52,5 +76,38 @@ public class DashboardPageFactory {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement cartItem = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), '" + itemName + "')]")));
         return cartItem != null;
+    }
+
+    public int getInventorySize() {
+        return inventoryItems.size();
+    }
+
+    public void clickItemImage(int index) {
+        itemImages.get(index).click();
+    }
+
+    public void clickItemName(int index) {
+        itemNames.get(index).click();
+    }
+
+    public String getItemDescription(int index) {
+        return itemDescriptions.get(index).getText();
+    }
+
+    public String getItemPrice(int index) {
+        return itemPrices.get(index).getText();
+    }
+
+    public void clickAddToCartButton(int index) {
+        addToCartButtons.get(index).click();
+    }
+
+    public int getItemIndexByName(String name) {
+        for (int i = 0; i < itemNames.size(); i++) {
+            if (itemNames.get(i).getText().equals(name)) {
+                return i;
+            }
+        }
+        throw new NoSuchElementException("Item with name " + name + " not found");
     }
 }

@@ -57,4 +57,24 @@ public class DashboardSteps {
         inventoryPageFactory.openShoppingCart();
         Assert.assertTrue("Item not added to cart: " + itemName, inventoryPageFactory.isItemInCart(itemName));
     }
+
+    @When("I click the product {string} image")
+    public void I_click_the_product_image(String name) {
+        int itemIndex = inventoryPageFactory.getItemIndexByName(name);
+        inventoryPageFactory.clickItemImage(itemIndex);
+    }
+
+    @When("I click the product {string} name")
+    public void I_click_the_product_name(String name) {
+        int itemIndex = inventoryPageFactory.getItemIndexByName(name);
+        inventoryPageFactory.clickItemName(itemIndex);
+    }
+
+    @Then("I should be navigated to detail product page")
+    public void I_should_be_navigated_to_detail_product_page() {
+        String currentUrl = driver.getCurrentUrl();
+        String expectedSubUrl = "inventory-item.html";
+        Assert.assertTrue("The URL should contain '" + expectedSubUrl + "', but it was: " + currentUrl,
+                currentUrl.contains(expectedSubUrl));
+    }
 }

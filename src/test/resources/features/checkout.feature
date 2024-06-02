@@ -8,7 +8,7 @@ Feature: Checkout product
     And I enter my username "standard_user" and password "secret_sauce"
     And I click the login button
     And I should be logged in successfully
-    And I click add to cart on product "Sauce Labs Bike Light"
+    And I add "Sauce Labs Bike Light" to the cart
     And I click the cart icon
     And I should be navigated to cart page
     And the cart should contain 1 item
