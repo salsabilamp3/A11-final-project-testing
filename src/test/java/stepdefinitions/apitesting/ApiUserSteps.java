@@ -37,16 +37,6 @@ public class ApiUserSteps {
         SetUpEndPoint.prepareURL(endpoint);
     }
 
-    @Then("validate status response code is equals {int}")
-    public void validate_status_response_code_is_equals(int statusCode){
-        GenericProcessAPI.validateStatusCode(apiUpdate.getResponse(), statusCode);
-    }
-
-    @Then("validate error message {string}")
-    public void validate_error_message(String errorMessage) {
-        GenericProcessAPI.validateErrorMessage(apiUpdate.getResponse(), errorMessage);
-    }
-
     /* Step Update User */
     @When("Hit api update user by id {string}")
     public void hit_api_update_user_by_id(String userId){
@@ -64,6 +54,16 @@ public class ApiUserSteps {
     public void hit_api_update_user_by_id(String field, String value, String userId) {
         String url = SetUpEndPoint.getURL();
         apiUpdate.putUserOneField(url, userId, field, value);
+    }
+
+    @Then("validate status update response code is equals {int}")
+    public void validate_status_response_code_is_equals(int statusCode){
+        GenericProcessAPI.validateStatusCode(apiUpdate.getResponse(), statusCode);
+    }
+
+    @Then("validate error update message {string}")
+    public void validate_error_message(String errorMessage) {
+        GenericProcessAPI.validateErrorMessage(apiUpdate.getResponse(), errorMessage);
     }
 
     // create

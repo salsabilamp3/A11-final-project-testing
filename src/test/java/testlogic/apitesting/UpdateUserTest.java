@@ -115,4 +115,58 @@ public class UpdateUserTest {
         return dataUser;
     }
 
+    public static User dataTestUpdateTitle(){
+        User dataUser = new User();
+
+        dataUser.setId("60d0fe4f5311236168a109db");
+        dataUser.setTitle("mrs");
+        dataUser.setFirstName("Naomi");
+        dataUser.setLastName("Rodrigues");
+        dataUser.setPicture("https://randomuser.me/api/portraits/med/women/39.jpg");
+        dataUser.setGender("female");
+        dataUser.setEmail("naomi.rodrigues@example.com");
+        dataUser.setDateOfBirth("1973-06-13T23:33:31.385Z");
+        dataUser.setPhone("(40) 6623-4814");
+
+        Location location = new Location();
+        location.setStreet("9134, Rua Castro Alves");
+        location.setCity("Garanhuns");
+        location.setState("Roraima");
+        location.setCountry("Brazil");
+        location.setTimezone("+9:00");
+        dataUser.setLocation(location);
+
+        dataUser.setRegisterDate("2021-06-21T21:02:10.280Z");
+        dataUser.setUpdatedDate("2021-06-21T21:02:10.280Z");
+
+        return dataUser;
+    }
+
+    public static User dataTestUpdateGender(){
+        User dataUser = new User();
+
+        dataUser.setId("60d0fe4f5311236168a10a18");
+        dataUser.setTitle("mr");
+        dataUser.setFirstName("Jeremy");
+        dataUser.setLastName("Morin");
+        dataUser.setPicture("https://randomuser.me/api/portraits/med/men/60.jpg");
+        dataUser.setGender("");
+        dataUser.setEmail("jeremy.morin@example.com");
+        dataUser.setDateOfBirth("1951-02-21T09:25:59.841Z");
+        dataUser.setPhone("081-702-1111");
+
+        Location location = new Location();
+        location.setStreet("1693, Argyle St");
+        location.setCity("Flatrock");
+        location.setState("Alberta");
+        location.setCountry("Canada");
+        location.setTimezone("-4:00");
+        dataUser.setLocation(location);
+
+        dataUser.setRegisterDate("2021-06-21T21:02:20.521Z");
+        dataUser.setUpdatedDate("2021-06-21T21:02:20.521Z");
+
+        return dataUser;
+    }
+
 }
