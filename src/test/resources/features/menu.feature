@@ -1,4 +1,4 @@
-Feature: Sidebar Menu
+Feature: Menu
   As a logged-in user
   I want to be able to interact with the sidebar menu
   So that I can navigate through the application and perform actions like logging out
