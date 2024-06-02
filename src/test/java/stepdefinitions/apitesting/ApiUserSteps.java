@@ -4,6 +4,7 @@ import Model.apitesting.User;
 import helper.SetUpEndPoint;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import testlogic.apitesting.CreateUserTest;
 import testlogic.apitesting.DeleteUserTest;
 import testlogic.apitesting.GenericProcessAPI;
@@ -34,8 +35,13 @@ public class ApiUserSteps {
         GenericProcessAPI.validateStatusCode(apiUpdate.getResponse(), statusCode);
     }
 
+    @Then("validate error message {string}")
+    public void validate_error_message(String errorMessage) {
+        GenericProcessAPI.validateErrorMessage(apiUpdate.getResponse(), errorMessage);
+    }
+
     /* Step Update User */
-    @Then("Hit api update user by id {string}")
+    @When("Hit api update user by id {string}")
     public void hit_api_update_user_by_id(String userId){
         dataTestUpdate = UpdateUserTest.prepareBodyUpdateAll();
         String url = SetUpEndPoint.getURL();
@@ -46,4 +52,11 @@ public class ApiUserSteps {
     public void validate_response_body_updated_user() {
         apiUpdate.checkResponseBodyUpdatedUser(dataTestUpdate);
     }
+
+    @When("Hit api update user {string} {string} by id {string}")
+    public void hit_api_update_user_by_id(String field, String value, String userId) {
+        String url = SetUpEndPoint.getURL();
+        apiUpdate.putUserOneField(url, userId, field, value);
+    }
+
 }

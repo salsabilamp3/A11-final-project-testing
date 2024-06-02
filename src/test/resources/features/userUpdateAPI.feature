@@ -9,3 +9,31 @@ Feature: User Update API
     When Hit api update user by id "60d0fe4f5311236168a109d1"
     Then validate status response code is equals 200
     And validate response body updated user
+
+  @API
+  Scenario: Update user title valid
+    Given Prepare url for "UPDATE_USER"
+    When Hit api update user "title" "mrs" by id "60d0fe4f5311236168a109db"
+    Then validate status response code is equals 200
+    And validate response body updated user
+
+  @API
+  Scenario: Update user gender
+    Given Prepare url for "UPDATE_USER"
+    When Hit api update user "gender" "" by id "60d0fe4f5311236168a109db"
+    Then validate status response code is equals 200
+    And validate response body updated user
+
+  @API
+  Scenario: Update user email
+    Given Prepare url for "UPDATE_USER"
+    When Hit api update user "email" "emails@example.com" by id "60d0fe4f5311236168a10a27"
+    Then validate status response code is equals 400
+    And validate error message "BODY_NOT_VALID"
+
+  @API
+  Scenario: Update user title with not existed id
+    Given Prepare url for "UPDATE_USER"
+    When Hit api update user "title" "mrs" by id "60d0fe4f5311236168a10a35"
+    Then validate status response code is equals 404
+    And validate error message "RESOURCE_NOT_FOUND"
