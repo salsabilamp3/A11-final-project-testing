@@ -41,8 +41,7 @@ public class UpdateUserTest {
         res = request.put(endpoint);
     }
 
-    public void checkResponseBodyUpdatedUser(User dataTestUser){
-        User expectedBody = prepareTestUpdateAll();
+    public void checkResponseBodyUpdatedUser(User expectedBody){
         User actualBody = res.as(User.class);
 
         assertEquals(expectedBody.getId(), actualBody.getId());
@@ -66,7 +65,7 @@ public class UpdateUserTest {
 
     }
 
-    public static User prepareTestUpdateAll(){
+    public User prepareTestUpdateAll(){
         User dataUser = new User();
 
         dataUser.setId("60d0fe4f5311236168a109d1");
@@ -93,7 +92,7 @@ public class UpdateUserTest {
         return dataUser;
     }
 
-    public static User prepareBodyUpdateAll(){
+    public User prepareBodyUpdateAll(){
         User dataUser = new User();
 
         dataUser.setTitle("mr");
@@ -115,7 +114,7 @@ public class UpdateUserTest {
         return dataUser;
     }
 
-    public static User dataTestUpdateTitle(){
+    public User dataTestUpdateTitle(){
         User dataUser = new User();
 
         dataUser.setId("60d0fe4f5311236168a109db");
@@ -129,7 +128,7 @@ public class UpdateUserTest {
         dataUser.setPhone("(40) 6623-4814");
 
         Location location = new Location();
-        location.setStreet("9134, Rua Castro Alves");
+        location.setStreet("9134, Rua Castro Alves ");
         location.setCity("Garanhuns");
         location.setState("Roraima");
         location.setCountry("Brazil");
@@ -142,7 +141,7 @@ public class UpdateUserTest {
         return dataUser;
     }
 
-    public static User dataTestUpdateGender(){
+    public User dataTestUpdateGender(){
         User dataUser = new User();
 
         dataUser.setId("60d0fe4f5311236168a10a18");

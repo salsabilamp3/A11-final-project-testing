@@ -40,14 +40,27 @@ public class ApiUserSteps {
     /* Step Update User */
     @When("Hit api update user by id {string}")
     public void hit_api_update_user_by_id(String userId){
-        dataTestUpdate = UpdateUserTest.prepareBodyUpdateAll();
+        dataTestUpdate = apiUpdate.prepareBodyUpdateAll();
         String url = SetUpEndPoint.getURL();
         apiUpdate.putUser(url, userId, dataTestUpdate);
     }
 
     @Then("validate response body updated user")
     public void validate_response_body_updated_user() {
-        apiUpdate.checkResponseBodyUpdatedUser(dataTestUpdate);
+        User expected = apiUpdate.prepareTestUpdateAll();
+        apiUpdate.checkResponseBodyUpdatedUser(expected);
+    }
+
+    @Then("validate response body updated gender user")
+    public void validate_response_body_updated_gender_user() {
+        User expected = apiUpdate.dataTestUpdateGender();
+        apiUpdate.checkResponseBodyUpdatedUser(expected);
+    }
+
+    @Then("validate response body updated title user")
+    public void validate_response_body_updated_title_user() {
+        User expected = apiUpdate.dataTestUpdateTitle();
+        apiUpdate.checkResponseBodyUpdatedUser(expected);
     }
 
     @When("Hit api update user {string} {string} by id {string}")
