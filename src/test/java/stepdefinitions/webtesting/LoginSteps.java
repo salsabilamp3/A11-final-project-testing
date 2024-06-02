@@ -2,9 +2,10 @@ package stepdefinitions.webtesting;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.And;
 import io.cucumber.java.After;
 import helper.SwagWebDriverManager;
 import testlogic.webtesting.LoginPageFactory;
@@ -13,11 +14,14 @@ public class LoginSteps {
     private WebDriver driver;
     private LoginPageFactory loginPageFactory;
 
+    public LoginSteps() {
+        this.driver = SwagWebDriverManager.getWebDriver();
+        this.loginPageFactory = new LoginPageFactory(driver);
+    }
+
     @Given("I am on the login page")
     public void i_am_on_the_login_page() {
-        driver = SwagWebDriverManager.getWebDriver();
         driver.get("https://www.saucedemo.com/");
-        loginPageFactory = new LoginPageFactory(driver);
     }
 
     @When("I enter my username {string} and password {string}")
