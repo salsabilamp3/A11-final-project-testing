@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import helper.SwagWebDriverManager;
 import testlogic.webtesting.LoginPageFactory;
 import testlogic.webtesting.DashboardPageFactory;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
@@ -20,19 +19,6 @@ public class DashboardSteps {
         this.driver = SwagWebDriverManager.getWebDriver();
         this.loginPageFactory = new LoginPageFactory(driver);
         this.inventoryPageFactory = new DashboardPageFactory(driver);
-    }
-
-    @Given("I am logged in to the inventory page")
-    public void i_am_logged_in_to_the_inventory_page() {
-        driver.get("https://www.saucedemo.com/");
-        loginPageFactory.setUserName("standard_user");
-        loginPageFactory.setPassword("secret_sauce");
-        loginPageFactory.clickLogin();
-        
-        // Ensure you are on the inventory page
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.urlContains("inventory.html"));
-        Assert.assertTrue(driver.getCurrentUrl().contains("inventory.html"));
     }
 
     @When("I add {string} to the cart")

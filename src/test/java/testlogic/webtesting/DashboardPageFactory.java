@@ -14,6 +14,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class DashboardPageFactory {
     WebDriver driver;
 
+    @FindBy(id = "user-name")
+    private WebElement usernameField;
+
+    @FindBy(id = "password")
+    private WebElement passwordField;
+
+    @FindBy(id = "login-button")
+    private WebElement loginButton;
+
     @FindBy(id = "add-to-cart-sauce-labs-backpack")
     WebElement addToCartSauceLabsBackpack;
 
@@ -52,6 +61,14 @@ public class DashboardPageFactory {
         PageFactory.initElements(driver, this);
     }
 
+    public void login(String username, String password) {
+        usernameField.sendKeys(username);
+        passwordField.sendKeys(password);
+        loginButton.click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.urlContains("inventory.html"));
+    }
+
     public void addToCartSauceLabsBackpack() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(addToCartSauceLabsBackpack)).click();
@@ -78,8 +95,13 @@ public class DashboardPageFactory {
         return cartItem != null;
     }
 
-    public int getInventorySize() {
-        return inventoryItems.size();
+    public int getItemIndexByName(String name) {
+        for (int i = 0; i < itemNames.size(); i++) {
+            if (itemNames.get(i).getText().equals(name)) {
+                return i;
+            }
+        }
+        throw new NoSuchElementException("Item with name " + name + " not found");
     }
 
     public void clickItemImage(int index) {
@@ -88,26 +110,5 @@ public class DashboardPageFactory {
 
     public void clickItemName(int index) {
         itemNames.get(index).click();
-    }
-
-    public String getItemDescription(int index) {
-        return itemDescriptions.get(index).getText();
-    }
-
-    public String getItemPrice(int index) {
-        return itemPrices.get(index).getText();
-    }
-
-    public void clickAddToCartButton(int index) {
-        addToCartButtons.get(index).click();
-    }
-
-    public int getItemIndexByName(String name) {
-        for (int i = 0; i < itemNames.size(); i++) {
-            if (itemNames.get(i).getText().equals(name)) {
-                return i;
-            }
-        }
-        throw new NoSuchElementException("Item with name " + name + " not found");
     }
 }
