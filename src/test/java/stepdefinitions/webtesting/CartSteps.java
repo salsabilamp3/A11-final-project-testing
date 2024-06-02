@@ -2,6 +2,8 @@ package stepdefinitions.webtesting;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 import helper.SwagWebDriverManager;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -66,5 +68,35 @@ public class CartSteps {
     @Then("The system displays the checkout information page")
     public void the_system_displays_the_checkout_information_page() {
         Assert.assertTrue("The URL should contain 'checkout-step-one.html'", driver.getCurrentUrl().contains("checkout-step-one.html"));
+    }
+
+    @Given("I should be navigated to cart page")
+    public void I_should_be_navigated_to_cart_page() {
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "cart.html";
+        Assert.assertTrue("The URL should contain '" + expectedUrl + "', but it was: " + currentUrl,
+                currentUrl.contains(expectedUrl));
+    }
+
+    @Given("the item on cart at index {int} should have quantity {string}, name {string}, description {string}, and price {string}")
+    public void the_item_on_cart_at_index_should_have_quantity_title_description_and_price(int index, String qty, String name, String desc, String price) {
+       WebElement item = cartPageFactory.getCartItemByIndex(index);
+        Assert.assertEquals(qty, cartPageFactory.getItemQuantity(item));
+        Assert.assertEquals(name, cartPageFactory.getItemTitle(item));
+        Assert.assertEquals(desc, cartPageFactory.getItemDescription(item));
+        Assert.assertEquals(price, cartPageFactory.getItemPrice(item));
+    }
+
+    @Given("the cart should contain {int} item")
+    public void the_cart_should_contain_item(int itemCount) {
+        Assert.assertEquals(itemCount, cartPageFactory.getCartItemsCount());
+    }
+
+    @Given("I should be navigated to checkout information page")
+    public void I_should_be_navigated_to_checkout_information_page() {
+        String currentUrl = driver.getCurrentUrl();
+        String expectedUrl = "checkout-step-one.html";
+        Assert.assertTrue("The URL should contain '" + expectedUrl + "', but it was: " + currentUrl,
+                currentUrl.contains(expectedUrl));
     }
 }

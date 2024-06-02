@@ -2,6 +2,7 @@ package testlogic.webtesting;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,6 +52,30 @@ public class CartPageFactory {
 
     public boolean isCheckoutErrorMessageDisplayed() {
         return checkoutErrorMessage.isDisplayed();
+    }
+
+    public int getCartItemsCount() {
+        return cartItems.size();
+    }
+
+    public WebElement getCartItemByIndex(int index) {
+        return cartItems.get(index);
+    }
+
+    public String getItemQuantity(WebElement item) {
+        return item.findElement(By.cssSelector("[data-test='item-quantity']")).getText();
+    }
+
+    public String getItemTitle(WebElement item) {
+        return item.findElement(By.cssSelector("[data-test='inventory-item-name']")).getText();
+    }
+
+    public String getItemDescription(WebElement item) {
+        return item.findElement(By.cssSelector("[data-test='inventory-item-desc']")).getText();
+    }
+
+    public String getItemPrice(WebElement item) {
+        return item.findElement(By.cssSelector("[data-test='inventory-item-price']")).getText();
     }
 
 }

@@ -33,6 +33,9 @@ public class DashboardSteps {
             case "Sauce Labs Onesie":
                 inventoryPageFactory.addToCartSauceLabsOnesie();
                 break;
+            case "Sauce Labs Bike Light":
+                inventoryPageFactory.addToCartSauceLabsBikeLight();
+                break;
             default:
                 throw new IllegalArgumentException("Invalid item: " + item);
         }

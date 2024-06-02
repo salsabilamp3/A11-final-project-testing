@@ -32,6 +32,9 @@ public class DashboardPageFactory {
     @FindBy(id = "add-to-cart-sauce-labs-onesie")
     WebElement addToCartSauceLabsOnesie;
 
+    @FindBy(id = "add-to-cart-sauce-labs-bike-light")
+    WebElement addToCartSauceLabsBikeLight;
+
     @FindBy(className = "shopping_cart_link")
     WebElement shoppingCartLink;
 
@@ -82,6 +85,11 @@ public class DashboardPageFactory {
     public void addToCartSauceLabsOnesie() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(addToCartSauceLabsOnesie)).click();
+    }
+
+    public void addToCartSauceLabsBikeLight() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.elementToBeClickable(addToCartSauceLabsBikeLight)).click();
     }
 
     public void openShoppingCart() {

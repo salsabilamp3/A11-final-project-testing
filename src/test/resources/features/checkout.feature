@@ -12,8 +12,8 @@ Feature: Checkout product
     And I click the cart icon
     And I should be navigated to cart page
     And the cart should contain 1 item
-    And the item on cart at index 0 should have quantity "1", title "Sauce Labs Bike Light", description "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.", and price "$9.99"
-    And I click the checkout button
+    And the item on cart at index 0 should have quantity "1", name "Sauce Labs Bike Light", description "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.", and price "$9.99"
+    And I click the 'Checkout' button
     And I should be navigated to checkout information page
 
   @checkoutTest
@@ -21,7 +21,7 @@ Feature: Checkout product
     When I click the cancel checkout button
     Then I should be navigated to cart page
     And the cart should contain 1 item
-    And the item on cart at index 0 should have quantity "1", title "Sauce Labs Bike Light", description "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.", and price "$9.99"
+    And the item on cart at index 0 should have quantity "1", name "Sauce Labs Bike Light", description "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.", and price "$9.99"
 
   @checkoutTest
   Scenario: Continue checkout with providing valid information
