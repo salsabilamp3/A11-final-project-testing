@@ -83,7 +83,7 @@ Berikut ini merupakan struktur project beserta penjelasannya
    ```
 
 ## Test Cases
-Pembuatan test case meliputi test positif dan negatif untuk fitur Login dan Logout.
+Pembuatan test case meliputi test web (menu, end to end) dan api
 
 ### A. Web Testing
 
