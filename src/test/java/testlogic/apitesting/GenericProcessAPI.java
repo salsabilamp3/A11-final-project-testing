@@ -5,11 +5,11 @@ import org.junit.Assert;
 import io.restassured.response.Response;
 
 public class GenericProcessAPI {
-    public static void validateStatusCode(Response actual, int expected){
-        Assert.assertEquals(actual.getStatusCode(), expected);
+    public static void validateStatusCode(int expected, Response actual){
+        Assert.assertEquals(expected, actual.getStatusCode());
     }
 
-    public static void validateErrorMessage(Response actual, String expected){
-        Assert.assertEquals(actual.getBody().jsonPath().getString("error"), expected);
+    public static void validateErrorMessage(String expected, Response actual){
+        Assert.assertEquals(expected, actual.getBody().jsonPath().getString("error"));
     }
 }

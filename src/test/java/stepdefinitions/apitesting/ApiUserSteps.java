@@ -72,12 +72,12 @@ public class ApiUserSteps {
 
     @Then("validate status update response code is equals {int}")
     public void validate_status_response_code_is_equals(int statusCode){
-        GenericProcessAPI.validateStatusCode(apiUpdate.getResponse(), statusCode);
+        GenericProcessAPI.validateStatusCode(statusCode, apiUpdate.getResponse());
     }
 
     @Then("validate error update message {string}")
     public void validate_error_message(String errorMessage) {
-        GenericProcessAPI.validateErrorMessage(apiUpdate.getResponse(), errorMessage);
+        GenericProcessAPI.validateErrorMessage(errorMessage, apiUpdate.getResponse());
     }
 
     // create
@@ -135,7 +135,7 @@ public class ApiUserSteps {
 
     @Then("validate create error message {string}")
     public void validate_creat_error_message(String errorMessage) {
-        GenericProcessAPI.validateErrorMessage(response, errorMessage);
+        GenericProcessAPI.validateErrorMessage(errorMessage, response);
     }
 
     @When("Send a CREATE request with invalid firstName length, valid lastName, and valid email")
@@ -158,12 +158,12 @@ public class ApiUserSteps {
 
     @Then("validate status get response code is equals {int}")
     public void validate_status_get_response_code_is_equals(int statusCode) {
-        GenericProcessAPI.validateStatusCode(response, statusCode);
+        GenericProcessAPI.validateStatusCode(statusCode, response);
     }
 
     @Then("validate get error message {string}")
     public void validate_get_error_message(String errorMessage) {
-        GenericProcessAPI.validateErrorMessage(response, errorMessage);
+        GenericProcessAPI.validateErrorMessage(errorMessage, response);
     }
 
     @Then("verify the response body contains user details with id {string}")
@@ -206,12 +206,12 @@ public class ApiUserSteps {
 
     @Then("validate status delete response code is equals {int}")
     public void validate_status_delete_response_code_is_equals(int statusCode) {
-        GenericProcessAPI.validateStatusCode(response, statusCode);
+        GenericProcessAPI.validateStatusCode(statusCode, response);
     }
 
     @Then("validate delete error message {string}")
     public void validate_delete_error_message(String errorMessage) {
-        GenericProcessAPI.validateErrorMessage(response, errorMessage);
+        GenericProcessAPI.validateErrorMessage(errorMessage, response);
     }
 
     @Then("verify the response body contains deleted user id {string}")
