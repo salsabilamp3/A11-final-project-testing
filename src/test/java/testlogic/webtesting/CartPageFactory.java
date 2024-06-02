@@ -52,4 +52,5 @@ public class CartPageFactory {
     public boolean isCheckoutErrorMessageDisplayed() {
         return checkoutErrorMessage.isDisplayed();
     }
+
 }
