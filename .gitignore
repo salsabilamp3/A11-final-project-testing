@@ -46,3 +46,5 @@ node_modules/
 
 # Direktori Maven wrapper
 .mvn/
+
+ testreport/
