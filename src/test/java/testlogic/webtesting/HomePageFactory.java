@@ -33,6 +33,9 @@ public class HomePageFactory {
     @FindBy(className = "bm-menu-wrap")
     private WebElement sidebarMenu;
 
+    @FindBy(id = "add-to-cart-sauce-labs-backpack")
+    private WebElement addToCartSauceLabsBackpack;
+
     public HomePageFactory(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -89,5 +92,9 @@ public class HomePageFactory {
 
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
+    }
+
+    public void clickAddToCartSauceLabsBackpack() {
+        addToCartSauceLabsBackpack.click();
     }
 }
