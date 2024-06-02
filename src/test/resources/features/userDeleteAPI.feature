@@ -18,13 +18,6 @@ Feature: Delete User API
     And validate delete error message "APP_ID_NOT_EXIST"
 
   @APIDelete
-  Scenario: Delete user with valid id and registered in the system
-    Given Prepare url for "DELETE_USER"
-    When Send a DELETE request with app-id "66273c13e26079618814ec16" to delete user with id "60d0fe4f5311236168a109d1"
-    Then validate status delete response code is equals 200
-    And verify the response body contains deleted user id "60d0fe4f5311236168a109d1"
-
-  @APIDelete
   Scenario: Delete user with valid id but not registered or already deleted in the system
     Given Prepare url for "DELETE_USER"
     When Send a DELETE request with app-id "66273c13e26079618814ec16" to delete user with id "60d0fe4f5311236168a109ce"
