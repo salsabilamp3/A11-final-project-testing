@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
     features = "src/test/resources/features", 
     glue = "stepdefinitions", 
-    plugin = { "pretty", "html: testreport/test-reports.html" } // Generates HTML report in the testreport/test-reports directory
+    plugin = { "pretty", "html:testreport/test-reports.html" } // Generates HTML report in the testreport/test-reports directory
 )
 public class TestRunner {
 }
