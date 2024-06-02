@@ -3,6 +3,7 @@ package stepdefinitions.apitesting;
 import static org.junit.Assert.assertEquals;
 
 import Model.apitesting.User;
+import Model.apitesting.Location;
 import Model.apitesting.UserRequired;
 import helper.SetUpEndPoint;
 import io.cucumber.java.en.Given;
@@ -142,6 +143,80 @@ public class ApiUserSteps {
         CreateUserTest.setHeader("app-id", "66273c13e26079618814ec16");
         userRequired = new UserRequired("F", "Elix", "felies@examples.com");
         response = CreateUserTest.createAllField(userRequired);
+    }
+
+    // Step Definitions for GET User API Tests
+    @When("Send a GET request without app-id in the header to retrieve user data with id {string}")
+    public void send_get_request_without_app_id(String userId) {
+        response = GetUserTest.getUserByIdWithoutAppId(userId);
+    }
+
+    @When("Send a GET request with app-id {string} to retrieve user data with id {string}")
+    public void send_get_request_with_app_id(String appId, String userId) {
+        response = GetUserTest.getUserByIdWithAppId(userId, appId);
+    }
+
+    @Then("validate status get response code is equals {int}")
+    public void validate_status_get_response_code_is_equals(int statusCode) {
+        GenericProcessAPI.validateStatusCode(response, statusCode);
+    }
+
+    @Then("validate get error message {string}")
+    public void validate_get_error_message(String errorMessage) {
+        GenericProcessAPI.validateErrorMessage(response, errorMessage);
+    }
+
+    @Then("verify the response body contains user details with id {string}")
+    public void verify_response_body_contains_user_details(String userId) {
+        User expectedUser = new User();
+        expectedUser.setId(userId);
+        expectedUser.setTitle("ms");
+        expectedUser.setFirstName("Ann");
+        expectedUser.setLastName("Mason");
+        expectedUser.setEmail("ann.mason@example.com");
+        expectedUser.setGender("female");
+        expectedUser.setDateOfBirth("1959-09-26T07:05:56.725Z");
+        expectedUser.setRegisterDate("2021-06-21T21:02:15.705Z");
+        expectedUser.setPhone("(385)-245-2517");
+        expectedUser.setPicture("https://randomuser.me/api/portraits/med/women/18.jpg");
+
+        Location location = new Location();
+        location.setStreet("2698, Paddock Way");
+        location.setCity("Orange");
+        location.setState("Wyoming");
+        location.setCountry("United States");
+        location.setTimezone("+3:00");
+        expectedUser.setLocation(location);
+
+        expectedUser.setUpdatedDate("2021-06-21T21:02:15.705Z");
+
+        apiGet.validateUserDetails(response, expectedUser);
+    }
+
+    // Step Definitions for DELETE User API Tests
+    @When("Send a DELETE request without app-id in the header to delete user with id {string}")
+    public void send_delete_request_without_app_id(String userId) {
+        response = DeleteUserTest.deleteUserByIdWithoutAppId(userId);
+    }
+
+    @When("Send a DELETE request with app-id {string} to delete user with id {string}")
+    public void send_delete_request_with_app_id(String appId, String userId) {
+        response = DeleteUserTest.deleteUserByIdWithAppId(userId, appId);
+    }
+
+    @Then("validate status delete response code is equals {int}")
+    public void validate_status_delete_response_code_is_equals(int statusCode) {
+        GenericProcessAPI.validateStatusCode(response, statusCode);
+    }
+
+    @Then("validate delete error message {string}")
+    public void validate_delete_error_message(String errorMessage) {
+        GenericProcessAPI.validateErrorMessage(response, errorMessage);
+    }
+
+    @Then("verify the response body contains deleted user id {string}")
+    public void verify_response_body_contains_deleted_user_id(String userId) {
+        assertEquals("Unexpected user id in response", userId, response.jsonPath().getString("id"));
     }
 
 }   
