@@ -1,0 +1,48 @@
+# Direktori build dari Maven
+target/
+
+# Direktori build dari Gradle
+build/
+
+# Direktori output dari IntelliJ IDEA
+out/
+
+# File kelas yang dihasilkan
+*.class
+
+# File log
+*.log
+
+# Konfigurasi IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Konfigurasi Eclipse
+.classpath
+.project
+.settings/
+
+# File JAR dan WAR yang dihasilkan
+*.jar
+*.war
+
+# File environment
+.env
+
+# File temporary dan cache
+tmp/
+.tmp
+*.swp
+*~
+
+# File konfigurasi sistem operasi
+.DS_Store
+Thumbs.db
+
+# Direktori node_modules (jika menggunakan Node.js)
+node_modules/
+
+# Direktori Maven wrapper
+.mvn/
