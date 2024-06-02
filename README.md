@@ -9,6 +9,7 @@ Automation Testing pada project ini menggunakan library berikut:
     <li>Cucumber</li>
     <li>Selenium</li>
     <li>WebDriverManager</li>
+    <li>RestAssured</li>
  </ul>
  
 # Getting Started
